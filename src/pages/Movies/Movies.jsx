@@ -1,8 +1,8 @@
 import { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import { useLocation, useSearchParams } from 'react-router-dom';
-import { API_KEY, BASE_URL, options } from 'constants/constants';
-import { errorToast, warningToast } from 'helpers/toasts';
+import { API_KEY, BASE_URL, options } from '../../constants/constants';
+import { errorToast, warningToast } from '../../helpers/toasts';
 import { debounce } from 'lodash';
 import MovieList from './MoviesList';
 import MovieText from './MoviesText';

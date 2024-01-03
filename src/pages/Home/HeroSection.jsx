@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export default function HeroSection({ firstMovie }) {
-  console.log(firstMovie);
   return (
     <>
       {firstMovie && (

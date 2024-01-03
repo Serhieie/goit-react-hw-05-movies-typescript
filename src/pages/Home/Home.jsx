@@ -1,10 +1,10 @@
 import { useEffect, useState, useMemo } from 'react';
-import { API_KEY, BASE_URL, options } from 'constants/constants';
+import { API_KEY, BASE_URL, options } from '../../constants/constants';
 import axios from 'axios';
 import HeroSection from './HeroSection';
 import TrendingSection from './TrendingSection';
-import { errorToast } from 'helpers/toasts';
-import NoPage from 'components/NoPage';
+import { errorToast } from '../../helpers/toasts';
+import NoPage from '../../components/NoPage';
 
 export default function Home() {
   const [movies, setMovies] = useState([]);

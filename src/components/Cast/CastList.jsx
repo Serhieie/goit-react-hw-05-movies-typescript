@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { API_KEY, BASE_URL, options } from 'constants/constants';
+import { API_KEY, BASE_URL, options } from '../../constants/constants';
 import { MdRecentActors } from 'react-icons/md';
-import { errorToast } from 'helpers/toasts';
+import { errorToast } from '../../helpers/toasts';
 
 export default function CastList() {
   const [credits, setCredits] = useState([]);

@@ -1,14 +1,14 @@
 import { useRef, useEffect, useState } from 'react';
-import { API_KEY, BASE_URL, options } from 'constants/constants';
+import { API_KEY, BASE_URL, options } from '../../constants/constants';
 import axios from 'axios';
 import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 import { Suspense } from 'react';
 import { IoPlaySkipBackSharp } from 'react-icons/io5';
-import RotatingLines from 'helpers/Loader';
-import { errorToast } from 'helpers/toasts';
+import Loader from '../../helpers/Loader.tsx';
+import { errorToast } from '../../helpers/toasts';
 import MovieDetailsField from './MovieDetailsField';
 import MovieDetailsList from './MovieDetailsList';
-import NoPage from 'components/NoPage';
+import NoPage from '../../components/NoPage';
 
 export default function MovieDetails() {
   const [movie, setMovie] = useState({});
@@ -49,7 +49,7 @@ export default function MovieDetails() {
       </Link>
       <MovieDetailsField movie={movie} />
       <MovieDetailsList />
-      <Suspense fallback={<RotatingLines />}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </div>

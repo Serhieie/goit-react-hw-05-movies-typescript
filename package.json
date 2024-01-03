@@ -1,18 +1,21 @@
 {
-  "name": "goit-react-hw-05-movies",
+  "name": "goit-react-hw-05-movies-typescript",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://serhieie.github.io/goit-react-hw-05-movies/",
+  "homepage": "https://serhieie.github.io/goit-react-hw-05-movies-typescript/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+    "@types/react": "^18.2.46",
+    "@types/react-dom": "^18.2.18",
+    "@types/react-loader-spinner": "^4.0.0",
     "axios": "^1.6.2",
     "formik": "^2.4.5",
     "lodash": "^4.17.21",
     "prop-types": "^15.8.1",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",
     "react-loader-spinner": "^5.4.5",
     "react-router-dom": "^6.20.0",
@@ -27,7 +30,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint:js": "eslint src/**/*.{js,jsx}"
+    "lint:js": "eslint src/**/*.{js,jsx,ts,tsx}"
   },
   "eslintConfig": {
     "extends": [

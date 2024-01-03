@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { API_KEY, BASE_URL, options } from 'constants/constants';
-import { errorToast } from 'helpers/toasts';
+import { API_KEY, BASE_URL, options } from '../../constants/constants';
+import { errorToast } from '../../helpers/toasts';
 import { MdCommentsDisabled } from 'react-icons/md';
 import { FaStar } from 'react-icons/fa';
 
