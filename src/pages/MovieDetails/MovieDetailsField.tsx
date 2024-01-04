@@ -1,7 +1,8 @@
 import { FaStar } from 'react-icons/fa';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { Movie } from '../Home/Home.types';
 
-export default function MovieDetailsField({ movie }) {
+const MovieDetailsField: React.FC<{ movie: Movie }> = ({ movie }) => {
   return (
     <div className="md:flex-col flex mt-10 mx-auto w-10/12 md:gap-4 gap-6 ">
       {movie.poster_path && (
@@ -9,7 +10,7 @@ export default function MovieDetailsField({ movie }) {
           loading="lazy"
           className="md:w-[420px] mx-auto"
           src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-          alt={movie.title ?? movie.name}
+          alt={movie.title || movie.name || 'Movie Poster'}
           width={290}
         />
       )}
@@ -26,6 +27,7 @@ export default function MovieDetailsField({ movie }) {
         <h3 className="text-xl font-semibold md:mt-0 lg:mt-2 mt-6">Genres</h3>
         <ul className="flex gap-4">
           {movie.poster_path &&
+            movie.genres &&
             movie.genres.map(gener => (
               <li className="md:text-sm" key={gener.id}>
                 {gener.name}
@@ -35,21 +37,6 @@ export default function MovieDetailsField({ movie }) {
       </div>
     </div>
   );
-}
-
-MovieDetailsField.propTypes = {
-  movie: PropTypes.shape({
-    poster_path: PropTypes.string,
-    title: PropTypes.string,
-    name: PropTypes.string,
-    vote_average: PropTypes.number,
-    release_date: PropTypes.string,
-    overview: PropTypes.string,
-    genres: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number,
-        name: PropTypes.string,
-      })
-    ),
-  }),
 };
+
+export default MovieDetailsField;

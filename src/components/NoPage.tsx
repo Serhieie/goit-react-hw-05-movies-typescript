@@ -1,4 +1,6 @@
-export default function NoPage() {
+import React from 'react';
+
+const NoPage: React.FC = () => {
   return (
     <div className="select-none flex justify-center items-center h-screen ">
       <div
@@ -22,4 +24,6 @@ export default function NoPage() {
       </div>
     </div>
   );
-}
+};
+
+export default NoPage;

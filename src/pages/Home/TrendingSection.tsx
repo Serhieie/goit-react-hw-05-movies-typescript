@@ -1,7 +1,10 @@
-import TrendingSectionList from './TrendingSectionList';
-import PropTypes from 'prop-types';
+import TrendingSectionList from './TrendingSectionList.tsx';
+import { Movie } from './Home.types.ts';
+import React from 'react';
 
-export default function TrandingSection({ restOfMovies }) {
+const TrandingSection: React.FC<{ restOfMovies: Movie[] }> = ({
+  restOfMovies,
+}) => {
   return (
     <section className="bg-gradient-to-t via-blue-950 from-black to-black">
       <h2
@@ -17,19 +20,6 @@ export default function TrandingSection({ restOfMovies }) {
       <TrendingSectionList restOfMovies={restOfMovies} />
     </section>
   );
-}
-
-TrandingSection.propTypes = {
-  restOfMovies: PropTypes.arrayOf(
-    PropTypes.shape({
-      backdrop_path: PropTypes.string.isRequired,
-      name: PropTypes.string,
-      id: PropTypes.number.isRequired,
-      overview: PropTypes.string.isRequired,
-      poster_path: PropTypes.string.isRequired,
-      release_date: PropTypes.string,
-      title: PropTypes.string,
-      vote_average: PropTypes.number.isRequired,
-    })
-  ),
 };
+
+export default TrandingSection;

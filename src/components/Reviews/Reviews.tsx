@@ -1,6 +1,7 @@
-import ReviewList from './ReviewsList';
+import ReviewList from './ReviewsList.tsx';
+import React from 'react';
 
-export default function Reviews() {
+const Reviews: React.FC = () => {
   return (
     <div className="w-10/12 mx-auto py-4 mt-4">
       <h3
@@ -14,4 +15,6 @@ export default function Reviews() {
       <ReviewList />
     </div>
   );
-}
+};
+
+export default Reviews;

@@ -1,5 +1,10 @@
-import PropTypes from 'prop-types';
-export default function MoviesText({ movieId }) {
+import React from 'react';
+
+interface MoviesTextProps {
+  movieId: string;
+}
+
+const MoviesText: React.FC<MoviesTextProps> = ({ movieId }) => {
   return (
     <>
       {!movieId && (
@@ -18,8 +23,6 @@ export default function MoviesText({ movieId }) {
       )}
     </>
   );
-}
-
-MoviesText.propTypes = {
-  movieId: PropTypes.string.isRequired,
 };
+
+export default MoviesText;

@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
+import React from 'react';
+import { Movie } from '../Home/Home.types';
 
-export default function MovieList({ visibleMovies }) {
+const MovieList: React.FC<{ visibleMovies: Movie[] }> = ({ visibleMovies }) => {
   const location = useLocation();
   return (
     <ul className="grid md:grid-cols-2 sm2:grid-cols-4 grid-cols-5 w-11/12 mx-auto gap-3 min-h-[450px] h-full">
@@ -22,7 +23,7 @@ export default function MovieList({ visibleMovies }) {
                 loading="lazy"
                 className="rounded-sm overflow-hidden object-cover lg:max-h-[190px] max-h-[320px] md:max-h-[300px]"
                 src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                alt={movie.title ?? movie.name}
+                alt={movie.title || movie.name || 'Movie Poster'}
                 width={250}
               />
               <h3 className="text-xs md:text-base">
@@ -33,18 +34,5 @@ export default function MovieList({ visibleMovies }) {
         ))}
     </ul>
   );
-}
-
-MovieList.propTypes = {
-  visibleMovies: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      id: PropTypes.number.isRequired,
-      overview: PropTypes.string.isRequired,
-      poster_path: PropTypes.string,
-      release_date: PropTypes.string.isRequired,
-      title: PropTypes.string,
-      vote_average: PropTypes.number.isRequired,
-    })
-  ).isRequired,
 };
+export default MovieList;

@@ -1,13 +1,19 @@
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { API_KEY, BASE_URL, options } from '../../constants/constants';
+import { API_KEY, BASE_URL, options } from '../../constants/constants.ts';
 import { MdRecentActors } from 'react-icons/md';
 import { errorToast } from '../../helpers/toasts';
 
-export default function CastList() {
-  const [credits, setCredits] = useState([]);
-  const { movieId } = useParams();
+interface Credit {
+  id: number;
+  profile_path: string | null;
+  name: string;
+}
+
+const CastList: React.FC = () => {
+  const [credits, setCredits] = useState<Credit[]>([]);
+  const { movieId } = useParams<{ movieId: string }>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,7 +22,7 @@ export default function CastList() {
           `${BASE_URL}movie/${movieId}/credits?${API_KEY}`,
           options
         );
-        const slicedFive = response.data.cast.slice(0, 10);
+        const slicedFive = response.data.cast.slice(0, 10) as Credit[];
         setCredits(slicedFive);
       } catch (error) {
         errorToast();
@@ -52,10 +58,12 @@ export default function CastList() {
         ))
       ) : (
         <li className="text-center col-span-5 justify-center flex gap-2 items-center">
-          <p>Oops! Sorry, but there are no information about actors</p>
+          <p>Oops! Sorry, but there is no information about actors</p>
           <MdRecentActors size={24} />
         </li>
       )}
     </ul>
   );
-}
+};
+
+export default CastList;

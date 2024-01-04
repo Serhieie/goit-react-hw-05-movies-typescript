@@ -1,4 +1,6 @@
-export const Footer = () => {
+import React from 'react';
+
+export const Footer: React.FC = () => {
   return (
     <footer className="text-center py-10 text-gray-300 bg-black">
       <h2 className="font-extrabold">goit-react-hw-05-movies</h2>

@@ -1,27 +1,28 @@
-import { useRef, useEffect, useState } from 'react';
-import { API_KEY, BASE_URL, options } from '../../constants/constants';
+import React, { useRef, useEffect, useState } from 'react';
+import { API_KEY, BASE_URL, options } from '../../constants/constants.ts';
 import axios from 'axios';
 import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 import { Suspense } from 'react';
 import { IoPlaySkipBackSharp } from 'react-icons/io5';
 import Loader from '../../helpers/Loader.tsx';
-import { errorToast } from '../../helpers/toasts';
-import MovieDetailsField from './MovieDetailsField';
-import MovieDetailsList from './MovieDetailsList';
-import NoPage from '../../components/NoPage';
+import { errorToast } from '../../helpers/toasts.js';
+import MovieDetailsField from './MovieDetailsField.tsx';
+import MovieDetailsList from './MovieDetailsList.tsx';
+import NoPage from '../../components/NoPage.tsx';
+import { Movie } from '../Home/Home.types.ts';
 
 export default function MovieDetails() {
-  const [movie, setMovie] = useState({});
-  const [error, setError] = useState(false);
+  const [movie, setMovie] = useState<Movie | undefined>(undefined);
+  const [error, setError] = useState<boolean>(false);
   const location = useLocation();
-  const backLinkLocation = useRef(location.state?.from ?? '/');
-  const { movieId } = useParams();
+  const backLinkLocation = useRef<string>(location.state?.from ?? '/');
+  const { movieId } = useParams<{ movieId: string }>();
 
   useEffect(() => {
     if (!movieId) return;
     const fetchData = async () => {
       try {
-        const response = await axios.get(
+        const response = await axios.get<Movie>(
           `${BASE_URL}movie/${movieId}?${API_KEY}`,
           options
         );
@@ -47,11 +48,17 @@ export default function MovieDetails() {
         <IoPlaySkipBackSharp size={18} />
         back
       </Link>
-      <MovieDetailsField movie={movie} />
-      <MovieDetailsList />
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
+      {movie ? (
+        <>
+          <MovieDetailsField movie={movie} />
+          <MovieDetailsList />
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+        </>
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 }

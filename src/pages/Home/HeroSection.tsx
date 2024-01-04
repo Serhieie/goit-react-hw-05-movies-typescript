@@ -1,8 +1,11 @@
 import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { Movie } from './Home.types.ts';
 
-export default function HeroSection({ firstMovie }) {
+const HeroSection: React.FC<{ firstMovie: Movie | null }> = ({
+  firstMovie,
+}) => {
   return (
     <>
       {firstMovie && (
@@ -46,16 +49,6 @@ export default function HeroSection({ firstMovie }) {
       )}
     </>
   );
-}
-
-HeroSection.propTypes = {
-  firstMovie: PropTypes.shape({
-    backdrop_path: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    overview: PropTypes.string.isRequired,
-    release_date: PropTypes.string,
-    title: PropTypes.string,
-    vote_average: PropTypes.number.isRequired,
-  }),
 };
+
+export default HeroSection;

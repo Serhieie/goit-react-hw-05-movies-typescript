@@ -1,7 +1,15 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, FormikHelpers } from 'formik';
 import { IoSearch } from 'react-icons/io5';
+import React from 'react';
 
-export default function MovieForm({ handleSubmit }) {
+interface MovieFormProps {
+  handleSubmit: (
+    values: { movieId: string },
+    actions: FormikHelpers<{ movieId: string }>
+  ) => void;
+}
+
+const MovieForm: React.FC<MovieFormProps> = ({ handleSubmit }) => {
   return (
     <Formik initialValues={{ movieId: '' }} onSubmit={handleSubmit}>
       <Form className="flex">
@@ -22,4 +30,6 @@ export default function MovieForm({ handleSubmit }) {
       </Form>
     </Formik>
   );
-}
+};
+
+export default MovieForm;

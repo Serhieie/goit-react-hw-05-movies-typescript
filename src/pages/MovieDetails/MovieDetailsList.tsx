@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
+import React from 'react';
 
-export default function MovieDetailsList() {
+const MovieDetailsList: React.FC = () => {
   return (
     <ul className="md:gap-4 flex justify-center items-center gap-20 w-4/6 mx-auto lg:mt-16 mt-8">
       <li className="flex justify-center">
@@ -21,4 +22,6 @@ export default function MovieDetailsList() {
       </li>
     </ul>
   );
-}
+};
+
+export default MovieDetailsList;

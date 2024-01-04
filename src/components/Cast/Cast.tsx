@@ -1,6 +1,7 @@
-import CastList from './CastList';
+import CastList from './CastList.tsx';
+import React from 'react';
 
-export default function Cast() {
+const Cast: React.FC = () => {
   return (
     <div className="w-10/12 mx-auto mt-4 py-4">
       <h3
@@ -14,4 +15,6 @@ export default function Cast() {
       <CastList />
     </div>
   );
-}
+};
+
+export default Cast;

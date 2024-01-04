@@ -1,13 +1,22 @@
 import { useParams } from 'react-router-dom';
+import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { API_KEY, BASE_URL, options } from '../../constants/constants';
+import { API_KEY, BASE_URL, options } from '../../constants/constants.ts';
 import { errorToast } from '../../helpers/toasts';
 import { MdCommentsDisabled } from 'react-icons/md';
 import { FaStar } from 'react-icons/fa';
 
+interface Rewiew {
+  id: number;
+  author: string;
+  author_details: { rating: number };
+  created_at: number;
+  content: string;
+}
+
 export default function ReviewList() {
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState<Rewiew[]>([]);
   const { movieId } = useParams();
 
   useEffect(() => {

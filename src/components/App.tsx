@@ -1,16 +1,19 @@
 import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Layout from './Layout/Layout';
-import NoPage from './NoPage';
+import Layout from './Layout/Layout.tsx';
+import NoPage from './NoPage.tsx';
+import React from 'react';
 
 //запитання яку функцію Helper найчастіше використовують для обробки іменованного єкспорту?
-const Cast = lazy(() => import('./Cast/Cast'));
-const Reviews = lazy(() => import('./Reviews/Reviews'));
-const MovieDetails = lazy(() => import('../pages/MovieDetails/MovieDetails'));
-const Movies = lazy(() => import('../pages/Movies/Movies'));
-const Home = lazy(() => import('../pages/Home/Home'));
+const Cast = lazy(() => import('./Cast/Cast.tsx'));
+const Reviews = lazy(() => import('./Reviews/Reviews.tsx'));
+const MovieDetails = lazy(
+  () => import('../pages/MovieDetails/MovieDetails.tsx')
+);
+const Movies = lazy(() => import('../pages/Movies/Movies.tsx'));
+const Home = lazy(() => import('../pages/Home/Home.tsx'));
 
-export const App = () => {
+export const App: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

@@ -1,7 +1,8 @@
 import { SiThemoviedatabase } from 'react-icons/si';
 import { NavLink } from 'react-router-dom';
+import React from 'react';
 
-export const Header = () => {
+export const Header: React.FC = () => {
   return (
     <header className="px-6  fixed top-0 left-0 right-0  bg-black z-20 shadow-lg shadow-blue-950">
       <nav className="py-2 px-6 flex items-center md:w-full md:px-1 gap-20 w-full pr-24">
